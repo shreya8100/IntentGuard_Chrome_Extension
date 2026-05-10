@@ -1,6 +1,8 @@
 # IntentGuard (Instagram)
 
 This project has been done by: Moumita Karmakar, Shreya Saha, Jeevesh Krishna Arigala
+
+
 Mindful middleware for Instagram. Three small interventions in a single
 popup, with no separate settings page.
 
