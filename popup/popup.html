@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="color-scheme" content="light" />
+    <title>IntentGuard</title>
+    <link rel="stylesheet" href="popup.css" />
+  </head>
+  <body>
+    <div class="wrap">
+      <header class="brand">
+        <span class="brand__logo" aria-hidden="true"></span>
+        <span class="brand__name">IntentGuard</span>
+      </header>
+
+      <section class="status" id="status">
+        <div class="status__line" id="status-line">Open Instagram to start a session.</div>
+        <div class="status__meta" id="status-meta"></div>
+      </section>
+
+      <div class="seg" role="tablist" aria-label="Mode">
+        <button type="button" class="seg__btn" id="mode-chill" role="tab" aria-selected="false">
+          <span class="seg__title">Chill</span>
+          <span class="seg__sub">skip listed topics</span>
+        </button>
+        <button type="button" class="seg__btn" id="mode-insight" role="tab" aria-selected="true">
+          <span class="seg__title">Insight</span>
+          <span class="seg__sub">only listed topics</span>
+        </button>
+      </div>
+
+      <section class="block">
+        <div class="row row--col">
+          <div class="row__text">
+            <div class="row__title">Topics to see</div>
+            <div class="row__sub">Comma-separated. Insight mode shows only these (empty = show everything).</div>
+          </div>
+          <textarea id="t-allow" rows="2" placeholder="news, tech, cooking"></textarea>
+        </div>
+
+        <div class="row row--col">
+          <div class="row__text">
+            <div class="row__title">Topics to skip</div>
+            <div class="row__sub">Always hidden, in both modes.</div>
+          </div>
+          <textarea id="t-block" rows="2" placeholder="gossip, drama"></textarea>
+        </div>
+
+        <label class="row">
+          <div class="row__text">
+            <div class="row__title">Hide promos &amp; sponsored</div>
+            <div class="row__sub">Adds promo, sponsored, shop now, ad to the skip list.</div>
+          </div>
+          <input type="checkbox" id="t-promos" class="switch" />
+        </label>
+
+        <label class="row">
+          <div class="row__text">
+            <div class="row__title">Interrupt after</div>
+            <div class="row__sub">Soft modal asks if you want to keep going.</div>
+          </div>
+          <div class="stepper">
+            <input type="number" id="t-minutes" min="1" max="240" step="1" />
+            <span>min</span>
+          </div>
+        </label>
+      </section>
+
+      <button class="end-btn" id="end-btn" type="button" disabled>End session now</button>
+
+      <div class="footer">
+        <span class="saved" id="saved"></span>
+      </div>
+    </div>
+    <script src="../content/store.js"></script>
+    <script src="popup.js"></script>
+  </body>
+</html>

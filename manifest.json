@@ -1,0 +1,41 @@
+{
+  "manifest_version": 3,
+  "name": "IntentGuard",
+  "version": "0.3.0",
+  "description": "Mindful middleware for Instagram — train your topic feed inline, one tap at a time.",
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  },
+  "background": {
+    "service_worker": "background.js",
+    "type": "module"
+  },
+  "permissions": ["storage", "alarms", "tabs"],
+  "host_permissions": ["https://*.instagram.com/*"],
+  "content_scripts": [
+    {
+      "matches": ["https://*.instagram.com/*"],
+      "js": [
+        "content/store.js",
+        "content/hosts/instagram.js",
+        "content/intention_prompt.js",
+        "content/trainer.js",
+        "content/mode_filter.js",
+        "content/interruption_modal.js",
+        "content/content.js"
+      ],
+      "css": ["content/overlay.css"],
+      "run_at": "document_start"
+    }
+  ]
+}
